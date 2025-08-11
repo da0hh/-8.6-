@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    float f, m, t; 
+    cout << " Введите массу вашего звездолёта в m килограмм и введите силу тяги двигателей в ньютонах на секунду: "; cin >> m >> f >> t;
+    float a = f / m, sqrtTime = pow(t, 2);
+    float distance = (a * (sqrtTime)) / 2;
+    cout << distance;
+}

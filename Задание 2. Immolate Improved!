@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    float health, magicDefence, fireBall;
+    cout << "Введите уровень здоровья орка: "; 
+    while (true) {
+        cin >> health;
+        if (health >= 0 && health <= 1) break;
+        cout << "Ошибка! Здоровье должно быть от 0 до 1. Повторите ввод: ";
+    }
+    cout << "Введите уровень сопротивления магии орка в процентах: ";
+    while (true) {
+        cin >> magicDefence;
+        if (magicDefence >= 0 && magicDefence <= 1) break;
+        cout << "Ошибка! Сопротивляемость должна быть от 0 до 1. Повторите ввод: ";
+    }
+
+
+    while (health > 0) {
+        if (health == 0) break;
+        else {
+            cout << "Введите уровень мощности огненого шара: "; 
+            while (true) {
+                cin >> fireBall;
+                if (fireBall >= 0 && fireBall <= 1) break;
+                cout << "Ошибка! Мощность должна быть от 0 до 1. Повторите ввод: ";
+            }
+            float counterDamage = fireBall - (magicDefence * fireBall);
+            cout << "Урон " << fireBall << " сопротивляемость " << magicDefence << ", по орку будет нанесено " << counterDamage << " урона\n";
+            health -= counterDamage;
+            cout << "Оставшееся очки здоровья: " << health << "\n";
+        }
+    }
+    cout << "Вы убили орка";
+}

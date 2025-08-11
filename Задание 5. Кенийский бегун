@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    int rounds;
+    cout << "Привет, Сэм! Сколько километров ты сегодня пробежал? ";
+    while (true) {
+        cin >> rounds;
+        if (rounds > 0)break;
+        cout << "Некоректный ввод. Попробуй еще раз\n";
+    }
+
+    for (int i = 1, summTemp = 0, temp; i <= rounds; i++) {
+        cout << "Какой у тебя был темп на километре " << i << "? "; cin >> temp;
+        summTemp += temp;
+        float middleTemp = summTemp / rounds;
+        float minutes = middleTemp / 60;
+        float summMinutes = (int)minutes * 60;
+        cout << "Твой средний темп за тренировку: " << (int)minutes << " минуты " << middleTemp - summMinutes << " секунд\n";
+    }
+
+}

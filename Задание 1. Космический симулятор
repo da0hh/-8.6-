@@ -1,11 +1,32 @@
 #include <iostream>
+#include <string>
+#include <limits>
+#include <numeric>
 using namespace std;
 
 int main() {
     setlocale(LC_ALL, "RU");
-    float f, m, t; 
-    cout << " Введите массу вашего звездолёта в m килограмм и введите силу тяги двигателей в ньютонах на секунду: "; cin >> m >> f >> t;
-    float a = f / m, sqrtTime = pow(t, 2);
-    float distance = (a * (sqrtTime)) / 2;
-    cout << distance;
+    cout << " Введите массу вашего звездолёта в m килограмм и введите силу тяги двигателей в ньютонах на секунду: ";
+    while (true)
+    {
+        float f, m, t; 
+        cin >> m >> f >> t;
+
+        if (m <= 0 or f <= 0 or t <= 0) {
+            cerr << "Ошибка ввода данных\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        if (cin.fail() or cin.peek() != '\n')
+        {
+            cerr << "Ошибка ввода данных\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        else {
+            float a = f / m, sqrtTime = pow(t, 2);
+            float distance = (a * (sqrtTime)) / 2;
+            cout << "Вы отдалились на "<< distance << " метров от начальной точки";
+        }
+    }
 }

@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    float start_amplitude, end_amplitude;
+    int count = 0;
+    float decay_rate = 0.084;  
+
+    while (true) {
+        cout << "Введите начальную амплитуду (см) > 0: ";
+        cin >> start_amplitude;
+        if (start_amplitude > 0) break;
+        cout << "Ошибка! Амплитуда должна быть положительной." << endl;
+    }
+
+    while (true) {
+        cout << "Введите конечную амплитуду (см) > 0: ";
+        cin >> end_amplitude;
+        if (end_amplitude > 0 && end_amplitude < start_amplitude) break;
+        cout << "Ошибка! Конечная амплитуда должна быть положительной "
+            << "и меньше начальной." << endl;
+    }
+
+    while (start_amplitude > end_amplitude) {
+        start_amplitude *= (1 - decay_rate);  
+        count++;
+    }
+
+    cout << "Маятник совершит " << count << " колебаний до остановки." << endl;
+}

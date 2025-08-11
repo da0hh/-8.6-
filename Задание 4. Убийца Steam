@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    float size, speed;
+    cout << "Укажите размер файла для скачивания: ";
+    while (true) {
+        cin >> size;
+        if (size > 0) break;
+        cout << "Ввод некоректный\nВведите размер файла заново: ";
+    }
+    cout << "Какова скорость интернет вашего соединения? ";
+    while (true) {
+        cin >> speed;
+        if (speed > 0) break;
+        cout << "Ввод некоректный\nВведите скорость вашего соединения заново: ";
+    }
+    
+    
+    for (int time = 1, downloaded = speed; downloaded <= size; time++) {
+        int percent = (downloaded * 100) / size;
+        cout << "Прошло " << time << " сек. Скачано " << downloaded << " из " << size << " МБ (" << percent << "%)\n";
+        downloaded += speed;
+        if (downloaded >= size) {
+            cout << "Прошло " << time + 1 << " сек. Скачано " << size << " из " << size << " МБ (100%)\n";
+            break;
+        }
+    }
+}

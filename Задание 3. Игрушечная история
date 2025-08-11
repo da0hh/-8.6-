@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    float x, y, z;
+    cout << "Введите размер бруска(x, y, z): "; 
+    while (true) {
+        cin >> x >> y >> z;
+        if (x >= 5 and x < 10000 and y >= 5 and y < 10000 and z >= 5 and z < 10000)break;
+        cout << "Ввод некоректный. Повторите ввод\n";
+        return 0;
+    }
+  
+    float figures = (x / 5) * (y / 5) * (z / 5);
+    int set = (int)figures / 27;
+    cout << "Из этого бруска можно изготовить " << figures <<" кубиков.\n";
+    cout << "Из них можно составить набор из " << set << " кубиков.\n";
+}
